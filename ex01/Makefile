@@ -3,8 +3,11 @@ NAME = AwesomePhoneBook
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
-SRCS = PhoneBook.cpp \
-		
+SRCS = \
+		main.cpp \
+		PhoneBook.cpp \
+		Contact.cpp 
+
 
 OBJS = $(SRCS:%.cpp=%.o)
 
