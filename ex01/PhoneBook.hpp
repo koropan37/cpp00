@@ -9,6 +9,9 @@ class PhoneBook{
 		Contact contacts_[PHONE_BOOK_SIZE];
 	public:
 		PhoneBook();
+		void run();
+		void add();
+		void search();
 
 };
 

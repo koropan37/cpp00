@@ -19,6 +19,6 @@ int main(int argc, char *argv[]) {
 	return 0;
 }
 
-
+//static_cast<T>(expr) 				 コンパイル時に安全な変換を明示している
 //std::cout << "line1" << std::endl; 改行 + flash = 頻繁に使うと遅くなる
 //std::cout << "line1\n"; 			 改行のみでflashは行わない = 大量出力ではこちらのほうがいい
