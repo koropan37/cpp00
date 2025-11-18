@@ -62,16 +62,19 @@ int PhoneBook::input_index() {
 		std::cerr << "Invalid index" << std::endl;
 	}
 }
+//stringstreamで文字列を操作, データ型によって値を判断
+//std::wsで後ろの空白を飛ばして、eofで終わるか(余計な文字がないか)チェック
 
 void PhoneBook::print_info() {
 	std::cout << "|" << std::setw(10) << "Index";
-	std::cout << "|" <<std::setw(10) << "First Name";
-	std::cout << "|" <<std::setw(10) << "Last Name";
-	std::cout << "|" <<std::setw(10) << "Nickname";
+	std::cout << "|" << std::setw(10) << "First Name";
+	std::cout << "|" << std::setw(10) << "Last Name";
+	std::cout << "|" << std::setw(10) << "Nickname";
 	std::cout << "|" << std::endl;
 	for(int i = 0; i < PHONE_BOOK_SIZE; i++)
 		print_open_info(contacts_[i], i);
 }
+//std::setwで幅指定
 
 void PhoneBook::print_open_info(Contact &contact, int index){
 	std::cout << "|" << std::right << std::setw(10) \

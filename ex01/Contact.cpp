@@ -12,11 +12,11 @@ std::string read_required(const std::string &prompt) {
 }
 
 void Contact::init_input(void) {
-    set_first_name(   read_required("First name: ") );
-    set_last_name(    read_required("Last name: ") );
-    set_nickname(     read_required("Nick name: ") );
-    set_phone_number( read_required("Phone Number: ") );
-    set_darkest_secret(read_required("Darkest Secret: ") );
+    set_first_name(read_required("First name: "));
+    set_last_name(read_required("Last name: "));
+    set_nickname(read_required("Nick name: "));
+    set_phone_number(read_required("Phone Number: "));
+    set_darkest_secret(read_required("Darkest Secret: "));
 }
 //即promptを出したいからflush
 
