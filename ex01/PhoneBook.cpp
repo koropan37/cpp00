@@ -20,13 +20,11 @@ void PhoneBook::run() {
 		while(true) {
 			std::cout << "Command (ADD or SEARCH or EXIT): " << std::flush;
 			if(!std::getline(std::cin, input)) throw std::runtime_error("EOF");
-			if(input == "ADD")
-				add();
-			else if(input == "SEARCH")
-				search();
-			else if(input == "EXIT")
-				break;
-			else {std::cerr << "Invalid Input\n";}
+			
+			if	   (input == "ADD") 	add();
+			else if(input == "SEARCH") 	search();
+			else if(input == "EXIT") 	break;
+			else 	std::cerr << "Invalid Input\n";
 		}
 	}
 	catch(const std::exception& e) {
@@ -51,6 +49,33 @@ void PhoneBook::search() {
 	print_details(index);
 }
 
+void PhoneBook::print_info() {
+	std::cout
+		<< "|" << std::setw(10) << "Index"
+		<< "|" << std::setw(10) << "First Name"
+		<< "|" << std::setw(10) << "Last Name"
+		<< "|" << std::setw(10) << "Nickname"
+		<< "|" << std::endl;
+	for(int i = 0; i < PHONE_BOOK_SIZE; i++)
+		print_open_info(contacts_[i], i);
+}
+//std::setwで幅指定
+
+void PhoneBook::print_open_info(Contact &contact, int index){
+	std::cout
+		<< "|" << std::right << std::setw(10) << index + 1
+		<< "|" << std::right << std::setw(10) << trim_info(contact.get_first_name())
+		<< "|" << std::right << std::setw(10) << trim_info(contact.get_last_name())
+		<< "|" << std::right << std::setw(10) << trim_info(contact.get_nickname())
+		<< "|" << std::endl;
+}
+
+std::string PhoneBook::trim_info(const std::string &str) {
+    if (str.length() > 10)
+        return str.substr(0, 9) + ".";
+    return str;
+}
+
 int PhoneBook::input_index() {
 	int idx;
 
@@ -65,35 +90,6 @@ int PhoneBook::input_index() {
 //stringstreamで文字列を操作, データ型によって値を判断
 //std::wsで後ろの空白を飛ばして、eofで終わるか(余計な文字がないか)チェック
 
-void PhoneBook::print_info() {
-	std::cout << "|" << std::setw(10) << "Index";
-	std::cout << "|" << std::setw(10) << "First Name";
-	std::cout << "|" << std::setw(10) << "Last Name";
-	std::cout << "|" << std::setw(10) << "Nickname";
-	std::cout << "|" << std::endl;
-	for(int i = 0; i < PHONE_BOOK_SIZE; i++)
-		print_open_info(contacts_[i], i);
-}
-//std::setwで幅指定
-
-void PhoneBook::print_open_info(Contact &contact, int index){
-	std::cout << "|" << std::right << std::setw(10) \
-				<< index + 1;
-	std::cout << "|" << std::right << std::setw(10) \
-				<< trim_info(contact.get_first_name());
-	std::cout << "|" << std::right << std::setw(10) \
-				<< trim_info(contact.get_last_name()) ;
-	std::cout << "|" << std::right << std::setw(10) \
-				<< trim_info(contact.get_nickname());
-	std::cout << "|" << std::endl;
-}
-
-std::string PhoneBook::trim_info(const std::string &str) {
-    if (str.length() > 10)
-        return str.substr(0, 9) + ".";
-    return str;
-}
-
 void PhoneBook::print_details(int index) {
 	int i = index - 1;
 
@@ -101,18 +97,13 @@ void PhoneBook::print_details(int index) {
 		std::cerr << "No contact index" << std::endl;
 		return;
 	}
-	std::cout << std::left;
-	std::cout << std::setw(DETAILS_COLUMN)
-				<< "Index: " << index << "\n";
-	std::cout << std::setw(DETAILS_COLUMN)
-				<< "First Name: " << contacts_[i].get_first_name() << "\n";
-	std::cout << std::setw(DETAILS_COLUMN)
-				<< "Last Name: " << contacts_[i].get_last_name() << "\n";
-	std::cout << std::setw(DETAILS_COLUMN)
-				<< "Nickname: " << contacts_[i].get_nickname() << "\n";
-	std::cout << std::setw(DETAILS_COLUMN)
-				<< "Phone number: " << contacts_[i].get_phone_number() << "\n";
-	std::cout << std::setw(DETAILS_COLUMN)
-				<< "darkest secret: " << contacts_[i].get_phone_number();
-	std::cout << std::endl;
+	std::cout
+		<< std::left
+		<< std::setw(DETAILS_COLUMN) << "Index: " 		   << index << "\n"
+		<< std::setw(DETAILS_COLUMN) << "First Name: " 	   << contacts_[i].get_first_name() << "\n"
+		<< std::setw(DETAILS_COLUMN) << "Last Name: "	   << contacts_[i].get_last_name() << "\n"
+		<< std::setw(DETAILS_COLUMN) << "Nickname: " 	   << contacts_[i].get_nickname() << "\n"
+		<< std::setw(DETAILS_COLUMN) << "Phone number: "   << contacts_[i].get_phone_number() << "\n"
+		<< std::setw(DETAILS_COLUMN) << "darkest secret: " << contacts_[i].get_phone_number()
+		<< std::endl;
 }

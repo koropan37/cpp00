@@ -18,6 +18,7 @@ class PhoneBook{
 	void 		print_details(int index);
  public:
 	PhoneBook();
+	
 	void run();
 	void add();
 	void search();

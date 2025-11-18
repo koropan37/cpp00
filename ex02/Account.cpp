@@ -25,7 +25,7 @@ int Account::getNbDeposits(void) { return _totalNbDeposits; }
 int Account::getNbWithdrawals(void) { return _totalNbWithdrawals; }
 
 void Account::displayAccountsInfos(void) {
-
+	_displayTimestamp();
 }
 
 void Account::makeDeposit(int deposit) {
@@ -43,5 +43,10 @@ void Account::displayStatus(void)const {
 }
 
 void Account::_displayTimestamp(void) {
-	
+	time_t time = std::time(NULL);
+	std::tm tm = *std::localtime(&time);
+	char timestamp[32];
+
+	std::strftime(timestamp, sizeof(timestamp), "[%Y%m%d_%H%M%S] ", &tm);
+	std::cout << timestamp;
 }
