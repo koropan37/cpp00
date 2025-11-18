@@ -1,7 +1,7 @@
 NAME = megaphone
 
 CXX = c++
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic
 
 SRCS = megaphone.cpp
 OBJS = $(SRCS:%.cpp=%.o)
@@ -26,7 +26,7 @@ fclean: clean
 
 re: fclean all
 
-run: $(NAME)
+run:
 	./megaphone "shhhhh... I think the students are asleep..."
 	./megaphone Damnit " ! " "Sorry students, I thought this thing was off."
 	./megaphone

@@ -12,12 +12,13 @@ class Contact{
 		std::string darkest_secret_;
 
 	public:
-		Contact();
-		std::string get_first_name();
-		std::string get_last_name();
-		std::string get_nickname();
-		std::string get_phone_number();
-		std::string get_darkest_secret();
+		void init_input();
+
+		std::string get_first_name() const;
+		std::string get_last_name() const;
+		std::string get_nickname() const;
+		std::string get_phone_number() const;
+		std::string get_darkest_secret() const;
 
 		void set_first_name(const std::string &v);
 		void set_last_name(const std::string &v);
@@ -26,4 +27,9 @@ class Contact{
 		void set_darkest_secret(const std::string &v);
 };
 
+		std::string read_required(const std::string &prompt);
+
 #endif
+
+//	getterでは基本的に末尾にconstをつけたほうがいい
+//	安全性向上やconstなオブジェクトから呼び出せるようになる
