@@ -4,12 +4,15 @@
 
 std::string read_required(const std::string &prompt) {
     std::string input;
-    do {
+
+    while (input.empty()) {
         std::cout << prompt << std::flush;
-        if (!std::getline(std::cin, input))  throw std::runtime_error("EOF");
-    } while (input.empty());
+        if (!std::getline(std::cin, input)) throw std::runtime_error("EOF");
+    }
     return input;
 }
+//即promptを出したいからflush
+//ctrl + D で例外処理
 
 void Contact::init_input(void) {
     set_first_name(		read_required("First name: "));
@@ -18,7 +21,6 @@ void Contact::init_input(void) {
     set_phone_number(	read_required("Phone Number: "));
     set_darkest_secret(	read_required("Darkest Secret: "));
 }
-//即promptを出したいからflush
 
 //setter
 void Contact::set_first_name(const std::string &v) { first_name_ = v; }

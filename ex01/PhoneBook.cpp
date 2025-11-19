@@ -9,9 +9,10 @@ PhoneBook::PhoneBook() :next_i_(0), count_(0){}
 //	std::stringのような変数はコンストラクタを書かなくても自動で初期化してくれるが
 //	int doubleなどは未初期化なので明示的に書く必要あり
 
+//	func() : ..., ...{} はメンバ初期化子リストで、直接初期化できる
 //	PhoneBook::PhoneBook(){next_i_ = 0} 組み込み型ならほとんど差はないが、
 //	クラス型のメンバ（std::string 等）はまずデフォルト構築され、
-//	その後に代入されるため余計な構築/代入が発生する（コストがかかる）。
+//	その後に代入されるため余計な構築/代入が発生する（コストがかかる）
 
 void PhoneBook::run() {
 	std::string input;
@@ -20,7 +21,7 @@ void PhoneBook::run() {
 		while(true) {
 			std::cout << "Command (ADD or SEARCH or EXIT): " << std::flush;
 			if(!std::getline(std::cin, input)) throw std::runtime_error("EOF");
-			
+
 			if	   (input == "ADD") 	add();
 			else if(input == "SEARCH") 	search();
 			else if(input == "EXIT") 	break;
