@@ -11,17 +11,18 @@ class PhoneBook{
 	int 	next_i_;
 	int		count_;
 
+	void 		add();
+	void 		search();
 	void 		print_info();
 	void 		print_open_info(Contact &contact, int index);
 	std::string trim_info(const std::string &str);
 	int 		input_index();
 	void 		print_details(int index);
+
  public:
 	PhoneBook();
 
 	void run();
-	void add();
-	void search();
 
 };
 
