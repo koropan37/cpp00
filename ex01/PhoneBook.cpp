@@ -105,6 +105,6 @@ void PhoneBook::print_details(int index) {
 		<< std::setw(DETAILS_COLUMN) << "Last Name: "	   << contacts_[i].get_last_name() << "\n"
 		<< std::setw(DETAILS_COLUMN) << "Nickname: " 	   << contacts_[i].get_nickname() << "\n"
 		<< std::setw(DETAILS_COLUMN) << "Phone number: "   << contacts_[i].get_phone_number() << "\n"
-		<< std::setw(DETAILS_COLUMN) << "darkest secret: " << contacts_[i].get_phone_number()
+		<< std::setw(DETAILS_COLUMN) << "darkest secret: " << contacts_[i].get_darkest_secret()
 		<< std::endl;
 }
